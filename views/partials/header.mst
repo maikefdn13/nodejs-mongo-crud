@@ -1,0 +1,24 @@
+<html>
+<head>
+    {{#pageTitle}}
+    <title>{{pageTitle}}</title>
+    {{/pageTitle}}
+    {{^pageTitle}}
+    <title>{{h.defaultPageTitle}}</title>
+    {{/pageTitle}}
+</head>
+<body>
+<h1>Cabecalho</h1>
+<hr/>    
+<ul>
+    {{#h.menu}}
+    <li><a href="{{slug}}">{{name}}</a></li>
+    {{/h.menu}}
+</ul>
+<hr/>
+
+{{#flashes}}
+    {{#success}}
+        <div>{{.}}</div>
+    {{/success}}    
+{{/flashes}}
