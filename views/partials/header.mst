@@ -20,5 +20,8 @@
 {{#flashes}}
     {{#success}}
         <div>{{.}}</div>
-    {{/success}}    
+    {{/success}}
+    {{#error}}
+        <div>{{.}}</div>
+    {{/error}}      
 {{/flashes}}
