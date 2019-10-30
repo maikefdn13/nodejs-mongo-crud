@@ -3,3 +3,10 @@
 <h1>Pagina Home:</h1>
 
 <h1>USUARIO LOGADO: {{userInfo.name}}</h1>
+
+
+{{#posts}}
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+    <hr>
+{{/posts}}
