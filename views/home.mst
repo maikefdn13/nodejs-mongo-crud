@@ -6,8 +6,9 @@
 
 
 {{#posts}}
-    <h3><a href="/post/{{slug}}">{{title}}</a></h3>
-    <p>{{body}}</p>
-    <a href="/post/{{slug}}/edit">[ editar ]</a>
-    <hr>
+    <div class="post">
+        <h3><a href="/post/{{slug}}">{{title}}</a></h3>
+        <p>{{body}}</p>
+        <a href="/post/{{slug}}/edit">[ editar ]</a>
+    </div>
 {{/posts}}
