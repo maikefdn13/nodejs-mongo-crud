@@ -4,6 +4,7 @@ const slug = require('slug');
 mongoose.Promise = global.Promise;
 
 const postSchema = new mongoose.Schema({
+    photo:String,
     title:{
         type:String,
         trim:true,
