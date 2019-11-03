@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 require('dotenv').config({path:'variables.env'});
 
 // CONFIGURACAO DO BANCO DE DADOS
-mongoose.connect(process.env.DATABASE, { 
+mongoose.connect(process.env.DATABASEWEB, { 
     useNewUrlParser: true, // Depreciado
     useUnifiedTopology: true, // Depreciado
     useFindAndModify: false // Depreciado
