@@ -39,4 +39,14 @@ postSchema.pre('save', async function(next){
     next();
 });
 
+postSchema.statics.getTagsList = function(){
+
+    //Metodo de agregacao de dados
+    return this.aggregate([
+        { $unwind:'$tags' },
+        { $group:{_id:'$tags', count: {$sum:1} } },
+        { $sort:{ count:-1} } //Ordenar sequencia do maior para o menor
+    ]);
+};
+
 module.exports = mongoose.model('Post', postSchema);
