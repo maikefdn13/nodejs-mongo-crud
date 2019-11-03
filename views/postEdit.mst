@@ -13,8 +13,8 @@
     </label>
     <br/>
     <label>
-        tags:
-       
+        Tags: <small>(Separar as tags por virgula)</small>
+        <input type="text" name="tags" value="{{post.tags}}"/>       
     </label>
     <br/>
     <input type="submit" value="salvar"/>

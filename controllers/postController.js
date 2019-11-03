@@ -5,16 +5,17 @@ exports.add = (req, res)=>{
     res.render('postAdd');
 }
 
-exports.addAction = async (req, res)=>{    
-    const post = new Post(req.body);
-    post.tags = [];
+exports.addAction = async (req, res)=>{   
+    // Quebrando a string em array e removendo espacos excedentes.
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.trim()); 
+    const post = new Post(req.body);  
 
     try{
         await post.save();
     } catch(error){        
         req.flash('error', 'Erro: '+error.message);
         res.redirect('/post/add');
-        return
+        return;
     }
     
     req.flash('success','Post salvo com sucesso!');
@@ -31,6 +32,9 @@ exports.edit = async (req, res)=>{
 }
 
 exports.editAction = async (req, res) => {
+    // Quebrando a string em array e removendo espacos excedentes.
+    req.body.tags = req.body.tags.split(',').map(tag=>tag.trim()); 
+    
     //Essa `e uma forma de usar uma funcao direta, sem necessidade de criar uma costante
     //Foi necessario criar essa modificacao porque o mongose nao excutou o postSchema.pre('save', function(next){});
     req.body.slug = require('slug')(req.body.title,{lower:true});
@@ -49,7 +53,7 @@ exports.editAction = async (req, res) => {
     }catch(error){
         req.flash('error', 'Erro: '+error.message);
         res.redirect('/post/'+req.params.slug+'/edit');
-        return
+        return;
     }       
     // Mostrar mensagem de sucesso
     req.flash('success','Post atualizado com sucesso!');
