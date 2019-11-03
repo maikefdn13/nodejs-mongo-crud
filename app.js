@@ -5,7 +5,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 
 const router = require('./routes/index'); // Router
-const helpers = require('./helpers'); // HELPERS 
+const helpers = require('./helpers'); // HELPERS.JS
 const errorHandler = require('./handlers/errorHandler'); 
 
 

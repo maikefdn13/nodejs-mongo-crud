@@ -3,7 +3,7 @@ const Post = mongoose.model('Post');
 
 exports.add = (req, res)=>{    
     res.render('postAdd');
-}
+};
 
 exports.addAction = async (req, res)=>{   
     // Quebrando a string em array e removendo espacos excedentes.
@@ -20,7 +20,7 @@ exports.addAction = async (req, res)=>{
     
     req.flash('success','Post salvo com sucesso!');
     res.redirect('/');
-}
+};
 
 exports.edit = async (req, res)=>{    
     // 1. Pegar as informacoes do post em questao
@@ -29,7 +29,7 @@ exports.edit = async (req, res)=>{
     // 2. Carregar o formulario de edicao
     res.render('postEdit',{post});
 
-}
+};
 
 exports.editAction = async (req, res) => {
     // Quebrando a string em array e removendo espacos excedentes.
@@ -59,4 +59,12 @@ exports.editAction = async (req, res) => {
     req.flash('success','Post atualizado com sucesso!');
     // Redirecionar para Home
     res.redirect('/');
-}
+};
+
+exports.view = async (req, res) => {
+    // 1. Pegar as informacoes do post em questao
+    const post = await Post.findOne({slug:req.params.slug});
+
+    // 2. Carregar no view
+    res.render('view',{post});
+};
