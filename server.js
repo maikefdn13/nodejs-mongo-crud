@@ -5,8 +5,9 @@ require('dotenv').config({path:'variables.env'});
 
 // CONFIGURACAO DO BANCO DE DADOS
 mongoose.connect(process.env.DATABASE, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    useNewUrlParser: true, // Depreciado
+    useUnifiedTopology: true, // Depreciado
+    useFindAndModify: false // Depreciado
 });
 
 //
