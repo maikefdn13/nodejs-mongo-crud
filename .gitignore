@@ -1,2 +1,4 @@
 /node_modules
-/public/media/
+
+/public/media/*
+!/public/media/.gitkeep

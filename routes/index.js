@@ -11,7 +11,12 @@ router.get('/',
     homeController.userMiddleWare,
     homeController.index
 );
+
 router.get('/users/login',userController.login);
+router.post('/users/login',userController.loginAction);
+
+router.get('/users/logout',userController.logout);
+
 router.get('/users/register',userController.register);
 router.post('/users/register',userController.registerAction);
 
