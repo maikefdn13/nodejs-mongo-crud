@@ -7,7 +7,7 @@
 <header>
     <h1>Cabecalho</h1>
     {{#user}}
-        Ola, {{user.name}}! <a href="/users/logout"> Sair </a>
+        Ola, {{user.name}}!
     {{/user}}
 
 

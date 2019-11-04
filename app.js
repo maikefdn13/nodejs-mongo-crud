@@ -42,9 +42,18 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use((req, res, next)=>{
-    res.locals.h = helpers;
+    res.locals.h = {...helpers};
     res.locals.flashes = req.flash();
     res.locals.user = req.user;  
+    
+    if(req.isAuthenticated()){
+        // Filtrar menu para guest ou logged
+        res.locals.h.menu = res.locals.h.menu.filter(i=>(i.logged));
+    }else{
+        // Filtrar menu para guest
+        res.locals.h.menu = res.locals.h.menu.filter(i=>(i.guest));
+    }
+
     next();
 });
 
