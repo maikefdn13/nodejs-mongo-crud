@@ -25,7 +25,7 @@ exports.index = async (req, res)=>{
 
     // Usando promise para ganho de tempo na consulta
     const tagsPromise =  Post.getTagsList();
-    const postsPromise =  Post.find(postFilter);
+    const postsPromise =  Post.findPosts(postFilter);
 
     // Execucao do Promisse
     const [ tags, posts ] = await Promise.all([tagsPromise, postsPromise]);
