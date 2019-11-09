@@ -18,7 +18,10 @@ const postSchema = new mongoose.Schema({
         trim:true
     },
     tags:[String],
-    author:ObjectId
+    author:{
+        type:ObjectId,
+        ref:'User'
+    }
 
 });
 
@@ -51,23 +54,5 @@ postSchema.statics.getTagsList = function(){
         { $sort:{ count:-1} } //Ordenar sequencia do maior para o menor
     ]);
 };
-
-postSchema.statics.findPosts = function(filters = {}){
-    return this.aggregate([
-        { $match:filters },
-        { $lookup:{
-            from:'users', // Buscar da tabela users
-            let:{ 'author':'$author' }, // Gerar variavel para a consulta. ($author) e referente ao valor do campo posts.
-            pipeline:[
-                { $match:{ $expr:{ $eq:[ '$$author', '$_id' ] } } },
-                { $limit:1 } // Limite para pegar o primeiro resultado.
-            ],
-            as:'author' // Resultado da consulta sera author
-        } },
-        { $addFields:{
-            'author':{ $arrayElemAt:[ '$author',0 ] } // Pegar o primeiro o objeto e remover o array.
-        }}
-    ]);
-}
 
 module.exports = mongoose.model('Post', postSchema);
